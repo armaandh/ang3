@@ -1,0 +1,25 @@
+<form action="">
+  <label for="celsius">Convert Celsius to Fahrenheit</label>
+  <input type="text" name="celsius" [(ngModel)]="celsiusInput" pattern="[0-9]*" required #celsiusModel="ngModel">
+  <span *ngIf="celsiusModel?.errors?.pattern">
+    Only numerical characters are allowed.</span>
+  <button (click)="convertToF(celsiusInput)" [disabled]="!celsiusModel.valid">Get Fahrenheit</button>
+  <br>
+  <div *ngIf="foundFahrenheit">
+    <br>
+    <span>{{celsiusInput + " Degrees Celcius is " + formatNumber(x) + " Degrees Fahrenheit"}}</span>
+
+  </div>
+  <br>
+  <label for="fahrenheit">Convert Fahrenheit to Celsius</label>
+  <input type="text" name="fahrenheit" [(ngModel)]="fahrenheitInput" pattern="[0-9]*" required #fahrenheitModel="ngModel">
+  <span *ngIf="fahrenheitModel?.errors?.pattern">
+    Only numerical characters are allowed.</span>
+  <button (click)="convertToC(fahrenheitInput)" [disabled]="!fahrenheitModel.valid">Get Celsius</button>
+  <br>
+  <div *ngIf="foundCelsius">
+    <br>
+    <span>{{fahrenheitInput + " Degrees Fahrenheit is " + formatNumber(x2) + " Degrees Celsius"}}</span>
+
+  </div>
+</form>

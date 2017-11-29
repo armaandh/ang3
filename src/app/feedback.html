@@ -1,0 +1,28 @@
+<!-- Submit feedback -->
+Your Email Address:
+<br/>
+<input [(ngModel)]="emailAddress" required minlength="4" #emailModel="ngModel">
+<br/>
+<div *ngIf="emailModel?.errors?.required">
+  email is required.
+</div>
+<div *ngIf="emailModel?.errors?.minlength">
+  Email must be at least 4 characters long.
+</div>
+<br/> Feedback:
+<br/>
+<textarea required ref-textarea minlength="4" [(ngModel)]="feedbackMsg" rows="4" #feedbackModel="ngModel"></textarea>
+<br/>
+<div *ngIf="feedbackModel?.errors?.required">
+  Feedback is required.
+</div>
+<div *ngIf="feedbackModel?.errors?.minlength">
+  Feedback must be at least 4 characters long.
+</div>
+<button (click)="postFeedback(emailAddress)">Send</button>
+
+<!-- Show result from Post -->
+<div class="result" *ngIf="feedbackResponseMsg">{{feedbackResponseMsg}}
+  <br/> {{feedbackResponseStatus}}
+</div>
+<br/>
